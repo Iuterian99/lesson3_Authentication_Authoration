@@ -23,9 +23,15 @@ const port = 9000;
 
 app.post("/login", (req, res)=>{
   const { name, password } = req.body;
+
   const allUsers = users.read();
-  console.log(JSON.parse(allUsers));
-  res.send("Ma`lumot keldi!");
+  const foundUser = JSON.parse(allUsers);
+  const user = foundUser.find(e => e.name == name && e.password == password)
+  if(!user){
+    res.sendStatus(401)
+  }else{
+    res.send("Ma`lumot keldi!");
+  }
   
 })
 
