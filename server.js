@@ -53,7 +53,7 @@ app.post("/login", (req, res)=>{
   const allUsers = users.read();
   const foundUser = JSON.parse(allUsers);
   const user = foundUser.find(e => e.name == name && e.password == password)
-  const accessToken = jwt.sign({ id: user.id, name: user.name }, secretKey) //--> token olish uchun secretKey bo`lishi shart
+  const accessToken = jwt.sign({ id: user.id, name: user.name }) //--> token olish uchun secretKey bo`lishi shart
   
   if(!user){
     res.sendStatus(401)
