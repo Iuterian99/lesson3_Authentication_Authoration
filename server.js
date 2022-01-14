@@ -2,8 +2,12 @@ const express = require('express');
 const app = express();
 const port = 9000;
 
+function middleware(req, res, next){
+console.log("Madina Rustamovna");
+next();
 
-app.get("/", (req, res) =>{ 
+}
+app.get("/", middleware, (req, res) =>{ 
   res.send("rahmat😍😍")
 })
 
